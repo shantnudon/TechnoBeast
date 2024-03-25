@@ -1,6 +1,8 @@
 import "./globals.css";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
+import SessionWrapper from "../../components/sessionWrapper";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "ShantnuDON",
@@ -9,12 +11,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" >
-      <body style={{"backgroundImage": `url(/bg.png)`}} className="text-white">
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
+    <html lang="en">
+      <SessionWrapper>
+        <body
+          style={{ backgroundImage: `url(/bg.png)` }}
+          className="text-white"
+        >
+          <div>
+            <Toaster />
+          </div>
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </SessionWrapper>
     </html>
   );
 }
